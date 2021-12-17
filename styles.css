@@ -1,0 +1,129 @@
+.option {
+	margin: 10px;
+}
+
+label {
+	display: flex;
+	align-items: center;
+	margin: 10px;
+}
+
+.generator {
+	border: 1px dashed grey;
+}
+
+.generator h2 {
+	margin: 10px;
+}
+.generator h3 {
+	margin: 10px;
+}
+
+.generateButton {
+	background-color: #0077ff;
+	color: white;
+	font-size: 110%;
+	font-weight: bold;
+	display: inline-block;
+	padding: 5px;
+	margin: 5px;
+	border-radius: 2px;
+}
+
+.initialText {
+	background-color: #0077ff;
+	color: white;
+}
+
+/* inputs */
+input {
+	margin-left: 20px;
+	border: 1px solid #0077ff;
+	padding: 5px;
+	border-radius: 2px;
+}
+
+input:focus {
+	outline: 2px solid #0077ff;
+}
+
+input[type='number'] {
+	width: 50px;
+}
+
+input[type='range'] {
+	writing-mode: bt-lr;
+	-webkit-appearance: slider-vertical;
+	outline: none;
+	margin: unset;
+	padding: unset;
+}
+
+.resultText {
+	display: inline-block;
+	padding: 5px;
+	background-color: #0077ff;
+	color: white;
+	margin-left: 20px;
+}
+
+::selection {
+	background-color: pink;
+}
+
+.dataSet {
+	/* border: 1px solid red; */
+	margin: 10px;
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+}
+
+.dataSet.lowerCaseLetters > .array > .item {
+	padding: 5px 6.5px;
+}
+
+.dataSet > .label {
+	margin-right: 10px;
+}
+
+.dataSet > .array {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: end;
+}
+
+.dataSet > .array > .item {
+	border: 1px solid whitesmoke;
+	padding: 10px;
+	font-size: 120%;
+	position: relative;
+}
+
+.dataSet > .array > .item > .num {
+	right: 0;
+	top: 0;
+	color: #0077ff;
+	font-size: 9px;
+	position: absolute;
+}
+
+.proportions {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.proportion {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.result {
+}
+
+.result > .help {
+	color: #0077ff;
+	font-size: 80%;
+	margin-left: 10px;
+}
