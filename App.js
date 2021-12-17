@@ -14,7 +14,7 @@ export default {
 	created() {},
 	data() {
 		return {
-			length: 4,
+			length: 16,
 			stringInitial: 'abcdefg',
 			shiftNumber: 0,
 			invertCase: false,
