@@ -12,6 +12,7 @@ import Proportion from './Proportion.js'
 const template = /*html*/ `
 	<div id="app">
 		<div>
+			<hr>
 			<div class="generator">
 				<h2>Password Generator</h2>
 				<label>
@@ -34,7 +35,8 @@ const template = /*html*/ `
 					</div>
 				</div>
 			</div>
-			<div class="result">
+			<hr>
+			<div class="postProcessing">
 				<h2>Post processing</h2>
 				<label>
 					Initial string: <input class="initialText" type="text" v-model="stringInitial" />

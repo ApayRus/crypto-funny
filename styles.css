@@ -2,6 +2,41 @@ header {
 	text-align: center;
 }
 
+header h1 {
+	color: #0077ff;
+	margin: 20px 20px 10px;
+}
+
+header p {
+	font-size: 120%;
+	color: grey;
+	margin: 10px 10px 25px;
+}
+
+hr {
+	color: grey;
+	border-width: 2px;
+}
+
+footer {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+footer img {
+	width: 24px;
+	margin: 5px;
+}
+
+footer img:hover {
+	opacity: 0.7;
+}
+
+footer a {
+	text-decoration: none;
+}
+
 .option {
 	margin: 10px;
 }
@@ -13,14 +48,14 @@ label {
 }
 
 .generator {
-	border: 1px dashed grey;
+	/* border: 1px dashed grey; */
 }
 
 .generator h2 {
 	margin: 10px;
 }
 .generator h3 {
-	margin: 10px;
+	margin: 20px 10px 10px;
 }
 
 .generateButton {
@@ -115,6 +150,7 @@ input[type='range'] {
 .proportions {
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .proportion {
@@ -123,10 +159,10 @@ input[type='range'] {
 	align-items: center;
 }
 
-.result {
+.postProcessing {
 }
 
-.result > .help {
+.postProcessing > .help {
 	color: #0077ff;
 	font-size: 80%;
 	margin-left: 10px;
