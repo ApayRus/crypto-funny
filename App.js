@@ -9,8 +9,56 @@ import dataSets from './dataSets.js'
 import DataSet from './DataSet.js'
 import Proportion from './Proportion.js'
 
+const template = /*html*/ `
+	<div id="app">
+		<div>
+			<div class="generator">
+				<h2>Password Generator</h2>
+				<label>
+					Length: <input min="4" type="number" v-model="length" />
+				</label>
+				<h3>Proportions</h3>
+				<div class="proportions">
+					<template v-for="dataSet in dataSets">
+						<generator-proportion :data="dataSet" />
+					</template>
+				</div>
+
+				<h3>Result generated</h3>
+				<div class="resultText">{{generatedString}}</div>
+
+				<h3>Data sets</h3>
+				<div class="dataSets">
+					<div v-for="dataSet in dataSets">
+						<data-set :data="dataSet" :generated_string="generatedString" />
+					</div>
+				</div>
+			</div>
+			<div class="result">
+				<h2>Post processing</h2>
+				<label>
+					Initial string: <input class="initialText" type="text" v-model="stringInitial" />
+				</label>
+				<div class="help">You can change it manually</div>
+				<label>
+					Shift on: <input min="0" type="number" v-model="shiftNumber" />
+				</label>
+				<label>
+					Invert case: <input type="checkbox" v-model="invertCase" />
+				</label>
+				<label>
+					Reverse: <input type="checkbox" v-model="reverse" />
+				</label>
+				<label>
+					Result text (changed): <div class="resultText">{{stringChanged}}</div>
+				</label>
+			</div>
+		</div>
+	</div>
+`
+
 export default {
-	template: document.querySelector('#app'),
+	template,
 	created() {},
 	data() {
 		return {
@@ -60,7 +108,6 @@ export default {
 				}
 			}, {})
 		},
-
 		countedSymbolsTotal() {},
 		generatedString() {
 			let result = this.dataSets.reduce((prev, item) => {
