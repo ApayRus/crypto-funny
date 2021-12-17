@@ -15,25 +15,28 @@ const template = /*html*/ `
 			<hr>
 			<div class="generator">
 				<h2>Password Generator</h2>
-				<label>
-					Length: <input min="4" type="number" v-model="length" />
-				</label>
-				<h3>Proportions</h3>
+				<div class="length">
+					<label>length
+						<input id="length" min="4" type="number" v-model="length" />
+					</label>
+				</div>
 				<div class="proportions">
 					<template v-for="dataSet in dataSets">
 						<generator-proportion :data="dataSet" />
 					</template>
 				</div>
-
-				<h3>Result generated</h3>
-				<div class="resultText">{{generatedString}}</div>
-
-				<h3>Data sets</h3>
-				<div class="dataSets">
-					<div v-for="dataSet in dataSets">
-						<data-set :data="dataSet" :generated_string="generatedString" />
-					</div>
+				<div class="result"> 
+					<div class="resultText">{{generatedString}}</div>
 				</div>
+			</div>
+			<hr>
+			<div class="occurrences">
+			<h2>Occurrences</h2>
+			<div class="dataSets">
+				<div v-for="dataSet in dataSets">
+					<data-set :data="dataSet" :generated_string="generatedString" />
+				</div>
+			</div>
 			</div>
 			<hr>
 			<div class="postProcessing">

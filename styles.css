@@ -57,6 +57,14 @@ label {
 .generator h3 {
 	margin: 20px 10px 10px;
 }
+.generator > .result {
+	margin-top: 20px;
+	text-align: center;
+}
+.generator > .length {
+	display: flex;
+	justify-content: center;
+}
 
 .generateButton {
 	background-color: #0077ff;
