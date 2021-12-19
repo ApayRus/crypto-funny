@@ -33,8 +33,9 @@ const template = /*html*/ `
 			<div class="occurrences">
 			<h2>Occurrences</h2>
 			<div class="dataSets">
+			<div class="triangle-up"></div>
 				<div v-for="dataSet in dataSets">
-					<data-set :data="dataSet" :generated_string="generatedString" />
+					<data-set :data_set="dataSet" :generated_string="generatedString" />
 				</div>
 			</div>
 			</div>
@@ -46,7 +47,7 @@ const template = /*html*/ `
 				</label>
 				<div class="help">You can change it manually</div>
 				<label>
-					Shift on: <input min="0" type="number" v-model="shiftNumber" />
+					Shift on: <input type="number" v-model="shiftNumber" />
 				</label>
 				<label>
 					Invert case: <input type="checkbox" v-model="invertCase" />
