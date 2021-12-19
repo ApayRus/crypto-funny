@@ -118,95 +118,9 @@ input[type='range'] {
 	background-color: pink;
 }
 
-.dataSets {
-	text-align: center;
-}
-
-.dataSet {
-	/* border: 1px solid red; */
-	/* margin: 10px; */
-}
-
-.dataSet.lowerCaseLetters > .array > .item {
-	padding: 5px 6.5px;
-}
-
-/* Christmas tree */
-
-.triangle-up {
-	width: 0;
-	height: 0;
-	border-left: 200px solid transparent;
-	border-right: 200px solid transparent;
-	border-bottom: 50px solid green;
-	display: inline-block;
-	margin-bottom: -4px;
-}
-
-.dataSet > .array {
-	margin-top: -4px;
-	margin-bottom: -4px;
-}
-
-.dataSets .label {
-	background: rgb(80, 80, 80);
-	color: white;
-	font-weight: bold;
-	display: inline-block;
-	padding: 5px;
-	width: 100px;
-	padding-top: 15px;
-	height: 25px;
-}
-
-.dataSet.numbers > .array > .item {
-	padding-left: 25px;
-	padding-right: 25px;
-}
-
-.dataSet.lowerCase > .array > .item {
-	/* font-size: 90%; */
-}
-
-.dataSet.upperCase > .array > .item {
-	/* font-size: 100%; */
-}
-
-.dataSet.symbols > .array > .item {
-	padding-left: 11px;
-	padding-right: 11px;
-}
-
-.dataSet > .array > .item {
-	border: 1px solid darkgreen;
-	padding: 10px;
-	font-size: 120%;
-	position: relative;
-	display: inline-block;
-	background: green;
-	color: white;
-	border-radius: 5px;
-}
-
-.dataSet > .array > .item > .num {
-	/* right: -2px; */
-	top: -2px;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	color: white;
-	background: red;
-	border: silver 1px solid;
-	min-width: 10px;
-	height: 10px;
-	border-radius: 7px;
-	padding: 2px;
-	font-size: 10px;
-	position: absolute;
-}
-
 .proportions {
 	display: flex;
-	flex-wrap: wrap;
+	/* flex-wrap: wrap; */
 	justify-content: center;
 }
 
@@ -214,6 +128,8 @@ input[type='range'] {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	flex: 1;
+	width: 6em;
 }
 
 .postProcessing {
@@ -223,4 +139,26 @@ input[type='range'] {
 	color: #0077ff;
 	font-size: 80%;
 	margin-left: 10px;
+}
+
+.generatorAndTree {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.generatorAndTree > .generator {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* justify-content: space-between; */
+	flex: 1;
+	/* border: 1px solid red; */
+}
+.generatorAndTree > .occurrences {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+	flex: 1;
+	/* border: 1px solid red; */
 }

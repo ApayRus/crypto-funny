@@ -6,39 +6,38 @@ import {
 	shuffle
 } from './functions.js'
 import dataSets from './dataSets.js'
-import DataSet from './DataSet.js'
+import RowsTree from './RowsTree.js'
+import TriangleTree from './TriangleTree.js'
 import Proportion from './Proportion.js'
 
 const template = /*html*/ `
 	<div id="app">
 		<div>
 			<hr>
-			<div class="generator">
-				<h2>Password Generator</h2>
-				<div class="length">
-					<label>length
-						<input id="length" min="4" type="number" v-model="length" />
-					</label>
-				</div>
-				<div class="proportions">
-					<template v-for="dataSet in dataSets">
-						<generator-proportion :data="dataSet" />
-					</template>
-				</div>
-				<div class="result"> 
-					<div class="resultText">{{generatedString}}</div>
-				</div>
+			<div class="generatorAndTree">
+				<div class="generator">
+					<h2>Password Generator</h2>
+					<div class="length">
+						<label>length
+							<input id="length" min="0" type="number" v-model="length" />
+						</label>
+					</div>
+					<div class="proportions">
+						<template v-for="dataSet in dataSets">
+							<generator-proportion :data="dataSet" />
+						</template>
+					</div>
+					<div class="result"> 
+						<div class="resultText">{{generatedString}}</div>
+					</div>
 			</div>
-			<hr>
 			<div class="occurrences">
-			<h2>Occurrences</h2>
-			<div class="dataSets">
-			<div class="triangle-up"></div>
-				<div v-for="dataSet in dataSets">
-					<data-set :data_set="dataSet" :generated_string="generatedString" />
-				</div>
+				<h2>Occurrences</h2>
+				<!-- <rows-tree :data_sets="dataSets" :generated_string="generatedString" /> --> 
+				<triangle-tree :data_sets="dataSets" :generated_string="generatedString" />
 			</div>
 			</div>
+			
 			<hr>
 			<div class="postProcessing">
 				<h2>Post processing</h2>
@@ -130,7 +129,8 @@ export default {
 	},
 	methods: {},
 	components: {
-		'data-set': DataSet,
+		'rows-tree': RowsTree,
+		'triangle-tree': TriangleTree,
 		'generator-proportion': Proportion
 	},
 	mounted() {}

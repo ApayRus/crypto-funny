@@ -1,0 +1,47 @@
+.triangleTree .row {
+	display: flex;
+	justify-content: center;
+}
+
+/* .triangleTree > .row > .item {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: green;
+	color: white;
+	width: 1em;
+	
+} */
+
+.triangleTree > .row > .item {
+	border: 1px solid darkgreen;
+	padding: 10px;
+	position: relative;
+	background: green;
+	color: white;
+	border-radius: 5px;
+	width: 0.3em;
+	height: 1em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.triangleTree > .row > .item > .num {
+	/* right: -2px; */
+	top: -2px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	background: red;
+	border: silver 1px solid;
+	min-width: 10px;
+	height: 10px;
+	font-size: 70%;
+	border-radius: 7px;
+	padding: 2px;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
