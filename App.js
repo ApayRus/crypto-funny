@@ -69,7 +69,7 @@ export default {
 	data() {
 		return {
 			length: 16,
-			stringInitial: 'abcdefg',
+			stringInitial: '1234567890',
 			shiftNumber: 0,
 			invertCase: false,
 			reverse: false,

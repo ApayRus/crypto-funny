@@ -26,8 +26,9 @@ export const multiplicity = (n1, n2) => Math.trunc(n1 / n2)
 export const shift = (string, number) => {
 	// shift('ABCDEFG', 3) => 'DEFGABC'
 
-	const mult = multiplicity(number, string.length)
-	const num = number - mult * string.length
+	const mult = Math.abs(multiplicity(number, string.length))
+	const delta = Math.abs(number) - mult * string.length
+	const num = number >= 0 ? delta : string.length - delta
 	const part1 = string.substr(0, num)
 	const part2 = string.substr(num, string.length)
 	return `${part2}${part1}`
