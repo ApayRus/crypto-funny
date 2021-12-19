@@ -60,6 +60,7 @@ label {
 .generator > .result {
 	margin-top: 20px;
 	text-align: center;
+	overflow-wrap: anywhere;
 }
 .generator > .length {
 	display: flex;
@@ -112,6 +113,7 @@ input[type='range'] {
 	background-color: #0077ff;
 	color: white;
 	margin-left: 20px;
+	border-radius: 5px;
 }
 
 ::selection {
