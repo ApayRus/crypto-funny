@@ -1,6 +1,8 @@
 # Crypto Funny
 
-Visual password generator and post processor
+Visual password generator and post processor.
+
+Stack: Html/Css/Vue `(from cdn, with no build)`.
 
 [Live Demo](https://apayrus.github.io/crypto-funny)
 
