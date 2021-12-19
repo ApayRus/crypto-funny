@@ -1,6 +1,6 @@
 # Crypto Funny
 
-visual password generator and post processor
+Visual password generator and post processor
 
 [Live Demo](https://apayrus.github.io/crypto-funny)
 
@@ -8,4 +8,4 @@ visual password generator and post processor
 2. Visualizes occurrences of random symbols on data set tables
 3. Changes password in predictable ways (revers, invert case, shift)
 
-![crypto-funny](https://user-images.githubusercontent.com/1222611/146489743-c6c8dc5d-5ca8-47d5-a671-39c7a373e56f.gif)
+![crypto-funny](https://apayrus.github.io/crypto-funny/images/crypto-funny.gif)

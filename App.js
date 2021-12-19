@@ -16,7 +16,7 @@ const template = /*html*/ `
 			<hr>
 			<div class="generatorAndTree">
 				<div class="generator">
-					<h2>Password Generator</h2>
+					<h2>Generator Params</h2>
 					<div class="length">
 						<label>length
 							<input id="length" min="0" type="number" v-model="length" />
