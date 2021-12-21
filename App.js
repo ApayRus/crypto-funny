@@ -1,12 +1,12 @@
 import {
-	shift,
-	invertStringCase,
-	reverseString,
-	sample,
-	shuffle
+  shift,
+  invertStringCase,
+  reverseString,
+  sample,
+  shuffle,
 } from './functions.js'
 import dataSets from './dataSets.js'
-import RowsTree from './RowsTree.js'
+import postProcessor from './postProcessor.js'
 import TriangleTree from './TriangleTree.js'
 import Proportion from './Proportion.js'
 
@@ -39,99 +39,91 @@ const template = /*html*/ `
 			</div>
 			
 			<hr>
-			<div class="postProcessing">
-				<h2>Post processing</h2>
-				<label>
-					Initial string: <input class="initialText" type="text" v-model="stringInitial" />
-				</label>
-				<div class="help">You can change it manually</div>
-				<label>
-					Shift on: <input type="number" v-model="shiftNumber" />
-				</label>
-				<label>
-					Invert case: <input type="checkbox" v-model="invertCase" />
-				</label>
-				<label>
-					Reverse: <input type="checkbox" v-model="reverse" />
-				</label>
-				<label>
-					Result text (changed): <div class="resultText">{{stringChanged}}</div>
-				</label>
+			<div class="postProcessor">
+				<h2>PostProcessor</h2>
+				<div class="options">
+					<template v-for="option in postProcessor">
+						<label>
+							{{option.label}}
+							<input 
+								:class="option.vModel" 
+								:type="option.type" 
+								v-model="option.vModel" 
+							/>
+							{{option.vModel}}
+						</label>
+					</template>
+				</div>
+				<div class="result">
+					<div class="label">Result text (changed): </div>
+					<div class="resultText">{{stringChanged}}</div>
+				</div>
 			</div>
 		</div>
 	</div>
 `
 
 export default {
-	template,
-	created() {},
-	data() {
-		return {
-			length: 16,
-			stringInitial: '1234567890',
-			shiftNumber: 0,
-			invertCase: false,
-			reverse: false,
-			dataSets
-		}
-	},
-	computed: {
-		stringChanged() {
-			const { stringInitial, shiftNumber, invertCase, reverse } = this
-			let result = shift(stringInitial, shiftNumber)
-			if (invertCase) {
-				result = invertStringCase(result)
-			}
-			if (reverse) {
-				result = reverseString(result)
-			}
-			return result
-		},
-		proportionsString() {
-			return JSON.stringify(this.dataSets, null, '\t')
-		},
-		totalProportions() {
-			return this.dataSets.reduce((prev, item) => +prev + +item.share, 0)
-		},
-		dataSetLength() {
-			return this.dataSets.reduce((prev, item) => {
-				if (this.totalProportions === 0) {
-					return {
-						...prev,
-						[item.name]: { ceil: 0, exact: 0 }
-					}
-				} else {
-					const proportionsRelative = +item.share / this.totalProportions
-					const dataSetLength = this.length * proportionsRelative
-					return {
-						...prev,
-						[item.name]: {
-							ceil: Math.ceil(dataSetLength),
-							exact: dataSetLength
-						}
-					}
-				}
-			}, {})
-		},
-		countedSymbolsTotal() {},
-		generatedString() {
-			let result = this.dataSets.reduce((prev, item) => {
-				const { string, name } = item
-				const { ceil: count } = this.dataSetLength[name]
-				const array = string.split('')
-				const result = sample(array, count)
-				return [...prev, ...result]
-				// now we have array with extra elements
-			}, [])
+  template,
+  created() {},
+  data() {
+    return {
+      length: 16,
+      stringInitial: '1234567890',
+      shiftNumber: 0,
+      invertCase: false,
+      reverse: false,
+      dataSets,
+      postProcessor,
+    }
+  },
+  computed: {
+    stringChanged() {
+      const { stringInitial, shiftNumber, invertCase, reverse } = this
+      let result = shift(stringInitial, shiftNumber)
+      if (invertCase) {
+        result = invertStringCase(result)
+      }
+      if (reverse) {
+        result = reverseString(result)
+      }
+      return result
+    },
+    totalProportions() {
+      return this.dataSets.reduce((prev, item) => +prev + +item.share, 0)
+    },
+    dataSetLength() {
+      return this.dataSets.reduce((prev, item) => {
+        const proportionsRelative =
+          +item.share / (this.totalProportions || Infinity)
+        const dataSetLength = this.length * proportionsRelative
+        return {
+          ...prev,
+          [item.name]: {
+            ceil: Math.ceil(dataSetLength),
+            exact: dataSetLength,
+          },
+        }
+      }, {})
+    },
+    countedSymbolsTotal() {},
+    generatedString() {
+      let result = this.dataSets.reduce((prev, item) => {
+        const { string, name } = item
+        const { ceil: count } = this.dataSetLength[name]
+        const array = string.split('')
+        const result = sample(array, count)
+        return [...prev, ...result]
+        // now we have array with extra elements
+      }, [])
 
-			return shuffle(result).slice(0, this.length).join('')
-		}
-	},
-	methods: {},
-	components: {
-		'rows-tree': RowsTree,
-		'triangle-tree': TriangleTree,
-		'generator-proportion': Proportion
-	},
-	mounted() {}
+      return shuffle(result).slice(0, this.length).join('')
+    },
+  },
+  methods: {},
+  components: {
+    'triangle-tree': TriangleTree,
+    'generator-proportion': Proportion,
+  },
+  mounted() {},
 }
