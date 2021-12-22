@@ -1,4 +1,3 @@
-import dataSets from './dataSets.js'
 import PostProcessor from './PostProcessor.js'
 import TriangleTree from './TriangleTree.js'
 import PasswordGenerator from './PasswordGenerator.js'
@@ -25,7 +24,16 @@ export default {
 	created() {},
 	data() {
 		return {
-			global: { generatedString: '', dataSets, length: 16 },
+			global: {
+				generatedString: '',
+				dataSets: [
+					{ name: 'numbers', string: '1234567890', share: 5 },
+					{ name: 'lowerCase', string: 'abcdefghijklmnopqrstuvwxyz', share: 5 },
+					{ name: 'upperCase', string: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', share: 5 },
+					{ name: 'symbols', string: `~!@#$%^&()_-={[}]|:;"'<,>?/\\\`*+`, share: 5,},
+				],
+				length: 16,
+			},
 		}
 	},
 	components: {
