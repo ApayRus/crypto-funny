@@ -19,12 +19,13 @@ const template = /*html*/ `
 export default {
 	template,
 	props: {
-		data_sets: Array,
-		generated_string: String
+		global: Object,
 	},
 	computed: {
 		triangleArray() {
-			const flatArray = this.data_sets.map(elem => elem.string.split('')).flat()
+			const flatArray = this.global.dataSets
+				.map(elem => elem.string.split(''))
+				.flat()
 			const triangleArray = [] // [ [1], [2,3], [4, 5, 6], [7, 8, 9, 10] ]
 			let i = 1
 			while (flatArray.length) {
@@ -32,12 +33,12 @@ export default {
 				i++
 			}
 			return triangleArray
-		}
+		},
 	},
 	methods: {
 		num(item) {
-			return this.generated_string.split('').filter(elem => elem === item)
+			return this.global.generatedString.split('').filter(elem => elem === item)
 				.length
-		}
-	}
+		},
+	},
 }
