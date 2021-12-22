@@ -7,11 +7,11 @@ const template = /*html*/ `
 <div id="app">
   <div>
     <hr>
-    <div class="generatorAndTree">
+    <div class="generatorAndOccurrences">
       <password-generator  :global="global"  /> 
       <div class="occurrences">
         <h2>Occurrences</h2>
-        <triangle-tree  :global="global" />
+          <triangle-tree  :global="global" />
       </div>
     </div>
     <hr>

@@ -149,18 +149,18 @@ input[type='range'] {
 	margin-left: 10px;
 }
 
-.generatorAndTree {
+.generatorAndOccurrences {
 	display: flex;
 	flex-wrap: wrap;
 }
 
-.generatorAndTree > .generator {
+.generatorAndOccurrences > .generator {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	flex: 1;
 }
-.generatorAndTree > .occurrences {
+.generatorAndOccurrences > .occurrences {
 	display: flex;
 	flex-direction: column;
 	text-align: center;
