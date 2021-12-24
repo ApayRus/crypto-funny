@@ -1,5 +1,4 @@
 import { sample, shuffle } from './functions.js'
-import Proportion from './Proportion.js'
 
 const template = /*html*/ `
 	<div class="generator">
@@ -11,7 +10,12 @@ const template = /*html*/ `
 		</div>
 		<div class="proportions">
 			<template v-for="dataSet in global.dataSets">
-				<generator-proportion :data="dataSet" />
+				<div class="proportion">
+					<label :for="dataSet.name" >
+						{{label(dataSet)}}
+					</label>
+					<input :id="dataSet.name" min="0" max="10" type="range" v-model="dataSet.share" orient="vertical" />
+				</div>
 			</template>
 		</div>
 		<div class="result">
@@ -23,7 +27,7 @@ const template = /*html*/ `
 export default {
 	template,
 	props: {
-		global: Object,
+		global: Object
 	},
 	computed: {
 		totalProportions() {
@@ -31,15 +35,14 @@ export default {
 		},
 		dataSetLength() {
 			return this.global.dataSets.reduce((prev, item) => {
-				const proportionsRelative =
-					+item.share / (this.totalProportions || Infinity)
+				const proportionsRelative = +item.share / (this.totalProportions || Infinity)
 				const dataSetLength = this.global.length * proportionsRelative
 				return {
 					...prev,
 					[item.name]: {
 						ceil: Math.ceil(dataSetLength),
-						exact: dataSetLength,
-					},
+						exact: dataSetLength
+					}
 				}
 			}, {})
 		},
@@ -55,9 +58,12 @@ export default {
 			result = shuffle(result).slice(0, this.length).join('')
 			this.global.generatedString = result
 			return result
-		},
+		}
 	},
-	components: {
-		'generator-proportion': Proportion,
-	},
+	methods: {
+		label(dataSet) {
+			const { label, name } = dataSet
+			return label || name
+		}
+	}
 }
