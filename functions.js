@@ -1,8 +1,6 @@
 const invertSymbolCase = symbol => {
 	// works for letters
-	return symbol === symbol.toUpperCase()
-		? symbol.toLowerCase()
-		: symbol.toUpperCase()
+	return symbol === symbol.toUpperCase() ? symbol.toLowerCase() : symbol.toUpperCase()
 }
 
 export const invertStringCase = string => {
@@ -42,4 +40,24 @@ export const sample = (array, count) => {
 	const restNum = count - array.length * mult
 	const restArray = shuffle(array).slice(0, restNum)
 	return shuffle([...fullArray, ...restArray])
+}
+
+/* 
+	[1, 2, 3, 4, 5, 6, 7, 8, 9, 0] ==> [ [1], [2,3], [4, 5, 6], [7, 8, 9, 10] ]
+	or 
+	1
+	23
+	456
+	7890
+*/
+export const triangleArray = flatArray => {
+	const triangleArray = []
+
+	let index = 1
+	while (flatArray.length) {
+		triangleArray.push(flatArray.splice(0, index))
+		index++
+	}
+
+	return triangleArray
 }
