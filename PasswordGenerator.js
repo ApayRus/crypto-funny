@@ -55,7 +55,7 @@ export default {
 				return [...prev, ...result]
 				// now we have array with extra elements
 			}, [])
-			result = shuffle(result).slice(0, this.length).join('')
+			result = shuffle(result).slice(0, this.global.length).join('')
 			this.global.generatedString = result
 			return result
 		}
